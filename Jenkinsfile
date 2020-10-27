@@ -1,6 +1,6 @@
 node{
  stage('Scm Checkout'){
-	 git credentialsId: 'git-creds', url: 'https://github.com/BabuJoseph15/my-app.git'  
+	 git credentialsId: 'git-creds', url: 'https://github.com/BabuJoseph15/docker-java-app.git'  
  }
  stage('Maven Package'){
 	def mvnHome = tool name: 'maven3', type: 'maven'
@@ -8,7 +8,7 @@ node{
         sh "${mvnCMD} clean package"
  }
  stage('Build Docker Image'){
-   sh 'docker build -t admin/sampleapp:1.0.0 .'
+   sh 'docker build . -t 3.19.27.239:8083/sampleapp'
  }
    stage('Push Docker Image'){
      withCredentials([string(credentialsId: 'nexus')]) {
