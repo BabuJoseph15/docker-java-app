@@ -3,12 +3,12 @@ ARG JAR_FILE=target/find-links.jar
 ARG JAR_LIB_FILE=target/lib/
 
 # cd /usr/local/runme
-WORKDIR /usr/local/runme
+WORKDIR /usr/local/nexus
 
-# cp target/app.jar /usr/local/runme/app.jar
+# cp target/app.jar /usr/local/nexus/app.jar
 COPY ${JAR_FILE} app.jar
 
-# cp -rf target/lib/  /usr/local/runme/lib
+# cp -rf target/lib/  /usr/local/nexus/lib
 ADD ${JAR_LIB_FILE} lib/
 
 # java -jar /usr/local/runme/app.jar
