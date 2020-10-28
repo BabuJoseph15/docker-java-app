@@ -7,7 +7,7 @@ ARG JAR_LIB_FILE=/var/lib/jenkins/workspace/Nexus-DockerImage/target/lib/
 WORKDIR /usr/local/nexus
 
 # copy target/find-links.jar /usr/local/nexus/app.jar
-COPY ${JAR_FILE} app.jar
+COPY ${JAR_FILE} /usr/local/nexus/app.jar
 
 #copy project dependencies
 #cp -rf target/lib /usr/local/nexus/lib
