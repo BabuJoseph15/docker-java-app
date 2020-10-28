@@ -8,14 +8,12 @@ node{
         sh "${mvnCMD} clean package"
  }
  stage('Build Docker Image'){
-   withCredentials([usernameColonPassword(credentialsId: 'nexus', variable: 'dockerhub-pwd')]) {
-      sh "docker login -u admin -p ${dockerhub-pwd}"
-   }	   
+   withCredentials([usernameColonPassword(credentialsId: 'nexus')]) {   
    sh 'docker build . -t 18.222.180.174:8083/sampleapp'
    }
    stage('Push Docker Image'){
-     withCredentials([usernameColonPassword(credentialsId: 'nexus', variable: 'dockerhub-pwd')]) {
-        sh "docker login -u admin -p ${dockerhub-pwd}"
+     withCredentials([usernameColonPassword(credentialsId: 'nexus')]) {
+        sh "docker login -u admin -p ${nexus}"
      }
      sh 'docker push http://18.222.180.174:8081/repository/docker-repo/sampleapp:1.0.0'
    }
