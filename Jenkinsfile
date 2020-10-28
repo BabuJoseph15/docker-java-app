@@ -11,13 +11,13 @@ node{
    withCredentials([usernameColonPassword(credentialsId: 'nexus', variable: 'dockerhub-pwd')]) {
       sh "docker login -u admin -p ${dockerhub-pwd}"
    }	   
-   sh 'docker build . -t 3.19.27.239:8083/sampleapp'
+   sh 'docker build . -t 18.222.180.174:8083/sampleapp'
    }
    stage('Push Docker Image'){
      withCredentials([usernameColonPassword(credentialsId: 'nexus', variable: 'dockerhub-pwd')]) {
         sh "docker login -u admin -p ${dockerhub-pwd}"
      }
-     sh 'docker push http://3.19.27.239:8081/repository/docker-repo/sampleapp:1.0.0'
+     sh 'docker push http://18.222.180.174:8081/repository/docker-repo/sampleapp:1.0.0'
    }
  }
    
